@@ -6,6 +6,14 @@
 
 <div class="container">
     <h1 class="text-center">Mon blog</h1>
+    @if(request()->get('page') <= 1)
+    <h4>Bienvenue ! Retrouvez ici tous mes articles.</h4>
+    <p>Presentation ipsum dolor sit amet consectetur, adipisicing elit. Amet totam, quam natus incidunt, eum earum voluptatibus vero a quisquam explicabo aperiam aut minima qui repellat id corporis quod consequuntur sapiente?
+    Neque aut hic animi aspernatur consequuntur ipsa nobis quasi nam omnis magni molestias dicta, est amet maiores eveniet esse magnam? Nihil earum labore quia exercitationem ducimus facilis perspiciatis ut fuga.
+    Possimus minus quibusdam sint libero rerum vero aliquid deserunt et placeat quaerat! Architecto eum non nesciunt, quisquam reiciendis temporibus ad consequatur consectetur quidem, quod fugiat sequi molestias voluptates. Distinctio, animi.
+    Explicabo, voluptates odio. Ut dolores in, rem quisquam nostrum natus inventore eius repellat harum, voluptates, non quod enim et odit ducimus. A nisi enim autem cupiditate esse, neque necessitatibus mollitia?
+    Quisquam voluptatum non amet tempora quod corrupti recusandae alias vitae! Necessitatibus, dignissimos. Debitis alias, inventore cumque quibusdam, minus minima, reprehenderit laboriosam ducimus sunt tenetur dolorum delectus illo mollitia sed rem.</p>
+@endif
     <div class="search">
         <form action="{{ route('posts.index') }}" method="get">
             <input type="text" name="search" placeholder="Rechercher par titre">
