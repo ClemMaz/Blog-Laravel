@@ -14,12 +14,34 @@ use App\Http\Requests\createPostRequest;
 
 class BlogController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
 
-        $posts =  Post::query()->with('user')->orderBy('created_at', 'desc')->paginate(1);
-        return view('blog.index', compact('posts'));
+        //$posts =  Post::query()->with('user')->orderBy('created_at', 'desc')->paginate(1);
+        //return view('blog.index', compact('posts'));
+
+        $query = Post::query()->with('user', 'categories')->orderBy('created_at', 'desc');
+
+    if ($request->has('category')) {
+        $category = $request->get('category');
+        $query->whereHas('categories', function ($query) use ($category) {
+            $query->where('categories.id', $category);
+        });
+
+        $posts = $query->paginate(1);
+
+        return view('blog.category', compact('posts')); // Retournez la vue 'category'
+
+
     }
+
+    $posts = $query->paginate(1);
+    $categories = Category::all();
+
+    return view('blog.index', compact('posts', 'categories'));
+}
+
+
 
     public function show(Post $post)
     {
@@ -42,7 +64,13 @@ class BlogController extends Controller
         $post = $request->validated();
         $post['image']= $path;
         $post['user_id'] = Auth::user()->id;
-        Post::query()->create($post);
+        //Post::query()->create($post);
+
+        $createdPost = Post::query()->create($post);
+
+        // Synchronisez les catégories
+        $createdPost->categories()->sync($request->categories);
+
         return redirect()->route('blog.index')->with('ok', 'Votre publication a bien été créée');
     }
 
@@ -66,6 +94,9 @@ class BlogController extends Controller
             $updatedPost['image'] = $path;
             $post['image'] = $path;
             $post->update($updatedPost);
+
+
+
             return redirect()->route('blog.index')->with('ok', 'Votre publication a bien été modifiée');
 
 
@@ -94,6 +125,16 @@ class BlogController extends Controller
         $posts = Post::all();
         return view('posts.index', ['posts' => $posts]);
     }
+
+
+}
+
+
+
+public function searchCategory(Category $category)
+{
+    $posts = Post::where('category_id', $category->id)->get();
+    return view('blog.category', compact('posts', 'category'));
 }
 
 }

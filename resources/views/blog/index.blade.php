@@ -14,12 +14,27 @@
     Explicabo, voluptates odio. Ut dolores in, rem quisquam nostrum natus inventore eius repellat harum, voluptates, non quod enim et odit ducimus. A nisi enim autem cupiditate esse, neque necessitatibus mollitia?
     Quisquam voluptatum non amet tempora quod corrupti recusandae alias vitae! Necessitatibus, dignissimos. Debitis alias, inventore cumque quibusdam, minus minima, reprehenderit laboriosam ducimus sunt tenetur dolorum delectus illo mollitia sed rem.</p>
 @endif
+<div class="search-container">
+
     <div class="search">
         <form action="{{ route('posts.index') }}" method="get">
             <input type="text" name="search" placeholder="Rechercher par titre">
             <button type="submit">Rechercher</button>
         </form>
     </div>
+    <div class="search-category">
+        <form action="{{ route('blog.index') }}" method="get">
+            <select name="category" onchange="this.form.submit()">
+                <option value="">Sélectionnez une catégorie</option>
+                @foreach($categories as $category)
+                    <option value="{{ $category->id }}">{{ $category->name }}</option>
+                @endforeach
+            </select>
+        </form>
+    </div>
+    </div>
+
+
 
     <ul>
         @foreach($posts as $post)
@@ -50,5 +65,15 @@
 
 
 </div>
+
+<script>
+    function validateForm() {
+        var x = document.getElementById("search").value;
+        if (x == "") {
+            alert("Veuillez écrire quelque chose");
+            return false;
+        }
+    }
+    </script>
 
 @endsection
