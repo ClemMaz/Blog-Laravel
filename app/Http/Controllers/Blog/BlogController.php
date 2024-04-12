@@ -123,7 +123,7 @@ class BlogController extends Controller
         return view('blog.search', ['posts' => $posts]);
     } else {
         $posts = Post::all();
-        return 'Veuillez entrer un titre';
+        return 'Veuillez entrer un titre valide';
     }
 
 
@@ -133,6 +133,8 @@ class BlogController extends Controller
 
 public function searchCategory(Category $category)
 {
+
+
     $posts = Post::where('category_id', $category->id)->get();
     return view('blog.category', compact('posts', 'category'));
 }

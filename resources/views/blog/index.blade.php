@@ -66,14 +66,6 @@
 
 </div>
 
-<script>
-    function validateForm() {
-        var x = document.getElementById("search").value;
-        if (x == "") {
-            alert("Veuillez écrire quelque chose");
-            return false;
-        }
-    }
-    </script>
+
 
 @endsection
