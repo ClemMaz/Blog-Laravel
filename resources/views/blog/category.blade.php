@@ -5,7 +5,7 @@
 @section('body')
 
 @if($posts->isEmpty())
-    <p>Aucun article trouvé pour la catégorie "{{ $category->name }}"</p>
+    <p>Aucun article n'appartient à cette catégorie</p>
 @else
     @foreach($posts as $post)
         <div class="card">
