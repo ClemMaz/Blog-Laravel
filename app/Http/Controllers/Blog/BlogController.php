@@ -123,7 +123,7 @@ class BlogController extends Controller
         return view('blog.search', ['posts' => $posts]);
     } else {
         $posts = Post::all();
-        return view('posts.index', ['posts' => $posts]);
+        return 'Veuillez entrer un titre';
     }
 
 
