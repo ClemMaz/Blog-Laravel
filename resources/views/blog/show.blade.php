@@ -30,7 +30,7 @@
             <form action="{{route('post.delete', $post)}}" method="post">
                 @csrf
                 @method('delete')
-                <button class="btn btn-danger">Supprimer</button>
+                <button class="btn btn-danger" type="submit" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet article ?')">Supprimer</button>
             </form>
         </div>
         @endcan
@@ -39,5 +39,8 @@
 
 
 </div>
-
 @endsection
+
+
+
+
