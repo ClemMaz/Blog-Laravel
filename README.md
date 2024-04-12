@@ -1,3 +1,19 @@
+Projet de blog pour se faire la main avant des projet plus ambitieux.
+
+Un article possède un titre, un auteur et une catégorie.
+Le visiteur peut consulter les articles (pagination, bouton "voir plus"...Etc).
+Il peut également rechercher les articles par titres et par catégories.
+Un user peut créer un compte et se logger (middleware).
+Une fois logger, il peut créer, modifier et supprimer ses -et seulement ses- articles. (titre, contenu, image, catégorie).
+
+
+
+
+
+
+
+
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
 <p align="center">
