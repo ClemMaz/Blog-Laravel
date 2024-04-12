@@ -27,12 +27,15 @@
             <select name="category" onchange="this.form.submit()">
                 <option value="">Sélectionnez une catégorie</option>
                 @foreach($categories as $category)
-                    <option value="{{ $category->id }}">{{ $category->name }}</option>
+                    <option value="{{ $category->id }}">
+                        <a href="{{ route('blog.category', $category->id) }}">{{ $category->name }}</a>
+                </option>
                 @endforeach
             </select>
         </form>
     </div>
     </div>
+    
 
 
 

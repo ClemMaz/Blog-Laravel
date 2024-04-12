@@ -4,10 +4,10 @@ namespace App\Http\Controllers\Blog;
 
 use App\Models\Post;
 use App\Models\Category;
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Requests\UpdatePost;
 use App\Http\Controllers\Controller;
-use Illuminate\Foundation\Auth\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\createPostRequest;
@@ -131,12 +131,14 @@ class BlogController extends Controller
 
 
 
-public function searchCategory(Category $category)
+public function searchCategory(Request $request, Category $category)
 {
 
 
     $posts = Post::where('category_id', $category->id)->get();
     return view('blog.category', compact('posts', 'category'));
 }
+
+
 
 }

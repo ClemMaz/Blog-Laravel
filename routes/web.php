@@ -24,13 +24,17 @@ Route::delete('/publication/{post}/supprimer', [BlogController::class, 'destroy'
 Route::get('/publication/{post}/modifier', [BlogController::class, 'edit'])->name('post.edit')->middleware('auth');
 Route::put('/publication/{post}/modifier', [BlogController::class, 'update'])->name('post.update')->middleware('auth');
 
-Route::get('/blog/category/{category}', [BlogController::class, 'searchCategory'])->name('blog.category');
-
-
 //search
 
 
+Route::get('/blog/category/{category}', [BlogController::class, 'searchCategory'])->name('blog.category');
+
+
+
+
 Route::get('/posts', [BlogController::class, 'search'])->name('posts.index');
+
+
 
 
 
